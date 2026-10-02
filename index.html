@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Rishabh • 18 ♡</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#09070d;--card:#151019dd;--pink:#ff8fc7;--pink2:#ff4fa3;--gold:#ffd77a;--text:#fff7fc;--muted:#c7b4c3}
+html,body{min-height:100%;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
+body{overflow-x:hidden;background:radial-gradient(circle at 10% 15%,#651b4a55,transparent 28%),radial-gradient(circle at 90% 85%,#8b601e33,transparent 30%),var(--bg)}
+body:before{content:"";position:fixed;inset:0;background:linear-gradient(#fff1 1px,transparent 1px),linear-gradient(90deg,#fff1 1px,transparent 1px);background-size:38px 38px;pointer-events:none;opacity:.12}
+#loading{position:fixed;inset:0;z-index:99;display:grid;place-items:center;background:#09070d;transition:.7s}
+#loading.hide{opacity:0;visibility:hidden}
+.loader{text-align:center}.heart{font-size:70px;color:var(--pink);filter:drop-shadow(0 0 24px var(--pink));animation:pulse 1s infinite}
+.loader p{margin-top:18px;color:#f0dce8;letter-spacing:.4px}.dots{margin-top:13px;color:var(--gold);letter-spacing:5px}
+@keyframes pulse{50%{transform:scale(1.18)}}
+
+#floaters{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.float{position:absolute;bottom:-60px;opacity:.75;animation:rise linear forwards}
+.balloon{width:28px;height:36px;border-radius:50%;box-shadow:0 0 18px currentColor}
+.balloon:after{content:"";position:absolute;left:14px;top:35px;height:65px;width:1px;background:#fff4}
+@keyframes rise{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+
+nav{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:20;width:min(430px,calc(100% - 30px));display:flex;gap:7px;padding:7px;border:1px solid #fff2;border-radius:22px;background:#120d17dd;backdrop-filter:blur(15px);box-shadow:0 10px 40px #0008}
+nav button{flex:1;border:0;background:transparent;color:#a996a5;padding:12px 8px;border-radius:17px;cursor:pointer;font-size:12px;transition:.3s}
+nav button.active{background:linear-gradient(135deg,#ff8fc722,#ffd77a18);color:#fff;box-shadow:inset 0 0 0 1px #ff8fc733}
+main{position:relative;z-index:1;min-height:100vh;padding:42px 16px 105px}
+.page{width:min(680px,100%);margin:auto;display:none;animation:pageIn .5s ease}
+.page.active{display:block}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.eyebrow{display:inline-block;padding:8px 14px;border:1px solid #fff2;border-radius:30px;background:#fff1;color:#eedce8;font-size:10px;letter-spacing:2px}
+h1{font-size:clamp(55px,15vw,90px);line-height:.9;margin:22px 0 8px;background:linear-gradient(90deg,#fff,var(--pink),var(--gold));-webkit-background-clip:text;color:transparent}
+.age{color:var(--gold);letter-spacing:6px;font-size:25px}
+.intro{color:var(--muted);line-height:1.65;margin:17px auto 25px;max-width:540px}
+.card{border:1px solid #fff2;border-radius:30px;background:linear-gradient(145deg,#fff0d,#fff1);backdrop-filter:blur(14px);box-shadow:0 25px 70px #0008;padding:30px 22px;text-align:center}
+.cake{font-size:88px;filter:drop-shadow(0 0 30px #ffd77a88);animation:cake 2s ease-in-out infinite}
+@keyframes cake{50%{transform:translateY(-5px);filter:drop-shadow(0 0 45px #ff8fc7aa)}}
+button.action{border:0;border-radius:999px;padding:14px 20px;background:linear-gradient(135deg,var(--gold),var(--pink));color:#1d0b17;font-weight:800;cursor:pointer;box-shadow:0 8px 30px #ff8fc744;transition:.25s}
+button.action:hover{transform:translateY(-3px)}
+.hint{font-size:12px;color:#9f8c9b;margin-top:11px}
+.letter{max-height:0;overflow:hidden;opacity:0;transition:.7s ease;margin-top:18px}
+.letter.open{max-height:600px;opacity:1}
+.letter-inner{text-align:left;border-top:1px solid #fff2;padding:25px 5px 0;color:#eadbe5;line-height:1.75;font-size:14px}
+.letter-inner strong{color:var(--pink)}.sign{text-align:right;color:var(--gold);margin-top:15px;font-style:italic}
+
+.section-title{font-size:clamp(34px,9vw,55px);margin:18px 0 8px;background:linear-gradient(90deg,#fff,var(--pink));-webkit-background-clip:text;color:transparent}
+.small{color:var(--muted);line-height:1.6;margin-bottom:25px}
+.bucket{display:grid;gap:11px}
+.wish{display:flex;align-items:center;gap:13px;padding:16px;border:1px solid #fff2;border-radius:18px;background:#fff1;text-align:left;cursor:pointer;transition:.3s}
+.wish:hover{transform:translateX(5px);border-color:#ff8fc755}
+.check{width:25px;height:25px;border-radius:8px;border:1px solid #ff8fc777;display:grid;place-items:center;color:transparent;flex:none;transition:.3s}
+.wish.done .check{background:linear-gradient(135deg,var(--pink),var(--gold));color:#24101b}
+.wish.done .wishtext{text-decoration:line-through;color:#887987}
+.wishtext{font-size:14px;color:#f1e4ec}.promise{font-size:11px;color:var(--gold);margin-left:auto}
+.timer-card{margin-top:22px;padding:25px;border-radius:25px;border:1px solid #ffd77a22;background:#ffd77a07}
+.timer-label{font-size:11px;letter-spacing:2px;color:#bda7b7}
+.timer{display:flex;justify-content:center;gap:8px;margin-top:15px;flex-wrap:wrap}
+.timebox{min-width:72px;padding:13px 8px;border-radius:15px;background:#0005;border:1px solid #fff1}
+.timebox b{display:block;font-size:27px;color:var(--gold)}.timebox span{font-size:9px;color:#a997a5;letter-spacing:1px}
+.countnote{margin-top:12px;color:#9f8c9b;font-size:11px}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:50}
+.conf{position:absolute;left:50%;top:45%;width:8px;height:14px;animation:burst 1.8s cubic-bezier(.15,.7,.25,1) forwards}
+@keyframes burst{to{transform:translate(var(--x),var(--y)) rotate(var(--r));opacity:0}}
+.footer{text-align:center;color:#665765;font-size:10px;margin-top:22px}
+@media(max-width:430px){.promise{display:none}.timebox{min-width:63px}.card{padding:25px 16px}}
+</style>
+</head>
+<body>
+<div id="loading"><div class="loader"><div class="heart">♡</div><p>Loading infinite joy...</p><div class="dots">• • •</div></div></div>
+<div id="floaters"></div><div id="confetti"></div>
+
+<main>
+<section id="bash" class="page active">
+  <div style="text-align:center">
+    <span class="eyebrow">A DIGITAL SURPRISE ✦</span>
+    <h1>Rishabh</h1><div class="age">18 ♡</div>
+    <p class="intro">Eighteen looks good on you. So here's a tiny little corner of the internet made especially for your birthday.</p>
+  </div>
+  <div class="card">
+    <div class="cake">🎂</div>
+    <h2 style="margin:17px 0 7px">Make a wish.</h2>
+    <p style="color:#bcaab7;font-size:13px;margin-bottom:20px">Your candles are waiting...</p>
+    <button class="action" id="blow">🕯️ Blow out the candles</button>
+    <div class="hint" id="blowHint">Click when you're ready ✨</div>
+    <button class="action" id="letterBtn" style="margin-top:20px;background:transparent;color:var(--gold);border:1px solid #ffd77a55;box-shadow:none">💌 Open your personal letter</button>
+    <div class="letter" id="letter"><div class="letter-inner">
+      <p>Happy 18th birthday, Rishabh! ❤️</p><br>
+      <p>I just want you to know how genuinely special you are to me. I hope you never forget that you matter, that you're appreciated, and that there are people who are always rooting for you.</p><br>
+      <p>Now that you're officially 18, I hope you don't lose the fun, the stupid jokes, the random conversations, and all the little things that make you <strong>you</strong>.</p><br>
+      <p>I hope this year brings you new memories, reasons to smile, and everything you've been quietly wishing for. And whenever life gets difficult, remember you never have to handle everything alone.</p>
+      <p class="sign">— always here for you ♡</p>
+    </div></div>
+  </div>
+  <div class="footer">made with love, late-night coding & way too many sparkles ✦</div>
+</section>
+
+<section id="future" class="page">
+  <div style="text-align:center">
+    <span class="eyebrow">PAGE TWO • FOR THE YEAR AHEAD ✦</span>
+    <h2 class="section-title">Future & Wishes</h2>
+    <p class="small">Five promises for the next chapter. Tap each one when we actually do it. ♡</p>
+  </div>
+  <div class="card" style="padding:22px">
+    <div class="bucket">
+      <div class="wish"><span class="check">✓</span><span class="wishtext">Have one completely spontaneous adventure.</span><span class="promise">01</span></div>
+      <div class="wish"><span class="check">✓</span><span class="wishtext">Take way too many photos and make another memory.</span><span class="promise">02</span></div>
+      <div class="wish"><span class="check">✓</span><span class="wishtext">Have a late-night conversation we'll remember.</span><span class="promise">03</span></div>
+      <div class="wish"><span class="check">✓</span><span class="wishtext">Celebrate a win — big or tiny — together.</span><span class="promise">04</span></div>
+      <div class="wish"><span class="check">✓</span><span class="wishtext">Do something neither of us has ever done before.</span><span class="promise">05</span></div>
+    </div>
+    <div class="timer-card">
+      <div class="timer-label">COUNTDOWN TO YOUR NEXT BIRTHDAY 🎈</div>
+      <div class="timer" id="timer">
+        <div class="timebox"><b id="days">--</b><span>DAYS</span></div>
+        <div class="timebox"><b id="hours">--</b><span>HOURS</span></div>
+        <div class="timebox"><b id="mins">--</b><span>MINUTES</span></div>
+        <div class="timebox"><b id="secs">--</b><span>SECONDS</span></div>
+      </div>
+      <div class="countnote">Until you turn 19 ✨</div>
+    </div>
+  </div>
+  <div class="footer">more adventures, more laughs, more memories ♡</div>
+</section>
+</main>
+
+<nav>
+ <button class="active" data-page="bash">🎂 Birthday Bash</button>
+ <button data-page="future">✨ Future & Wishes</button>
+</nav>
+
+<script>
+const floaters=document.getElementById("floaters");
+const symbols=["✦","✧","♡","⋆","•"];
+function spawn(){
+ const e=document.createElement("div"), balloon=Math.random()>.55;
+ e.className="float"+(balloon?" balloon":"");
+ if(!balloon)e.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+ if(balloon)e.style.color=["#ff8fc7","#ffd77a","#d98cff"][Math.floor(Math.random()*3)];
+ e.style.left=Math.random()*100+"%";e.style.fontSize=12+Math.random()*20+"px";
+ e.style.animationDuration=7+Math.random()*8+"s";floaters.appendChild(e);
+ setTimeout(()=>e.remove(),16000);
+}
+setInterval(spawn,500);for(let i=0;i<12;i++)setTimeout(spawn,i*120);
+window.addEventListener("load",()=>setTimeout(()=>document.getElementById("loading").classList.add("hide"),3000));
+
+document.querySelectorAll("nav button").forEach(btn=>btn.onclick=()=>{
+ document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));
+ btn.classList.add("active");
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ document.getElementById(btn.dataset.page).classList.add("active");
+ window.scrollTo({top:0,behavior:"smooth"});
+});
+
+document.getElementById("letterBtn").onclick=()=>{
+ const l=document.getElementById("letter");l.classList.toggle("open");
+ document.getElementById("letterBtn").textContent=l.classList.contains("open")?"💗 Close your personal letter":"💌 Open your personal letter";
+};
+
+document.getElementById("blow").onclick=()=>{
+ burst();
+ document.getElementById("blow").textContent="🎉 Wish made!";
+ document.getElementById("blowHint").textContent="Happy 18th, Rishabh! May this year be unforgettable. ✨";
+ document.getElementById("blow").disabled=true;
+};
+function burst(){
+ const box=document.getElementById("confetti");
+ for(let i=0;i<110;i++){
+  const c=document.createElement("i");c.className="conf";
+  c.style.background=["#ff8fc7","#ffd77a","#fff","#d98cff"][Math.floor(Math.random()*4)];
+  c.style.setProperty("--x",(Math.random()*720-360)+"px");
+  c.style.setProperty("--y",(Math.random()*680-350)+"px");
+  c.style.setProperty("--r",(Math.random()*1100-550)+"deg");
+  box.appendChild(c);setTimeout(()=>c.remove(),1900);
+ }
+}
+document.querySelectorAll(".wish").forEach(w=>w.onclick=()=>w.classList.toggle("done"));
+
+/* Countdown to the next October 3rd. Change the month/day below if the real birthday is different. */
+function countdown(){
+ const now=new Date(), year=now.getFullYear();
+ let target=new Date(year,9,3,0,0,0);
+ if(now>=target)target=new Date(year+1,9,3,0,0,0);
+ let s=Math.max(0,Math.floor((target-now)/1000));
+ const d=Math.floor(s/86400);s%=86400;
+ const h=Math.floor(s/3600);s%=3600;
+ const m=Math.floor(s/60),sec=s%60;
+ document.getElementById("days").textContent=String(d).padStart(2,"0");
+ document.getElementById("hours").textContent=String(h).padStart(2,"0");
+ document.getElementById("mins").textContent=String(m).padStart(2,"0");
+ document.getElementById("secs").textContent=String(sec).padStart(2,"0");
+}
+countdown();setInterval(countdown,1000);
+</script>
+</body>
+</html>
